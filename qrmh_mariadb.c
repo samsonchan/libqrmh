@@ -143,6 +143,18 @@ void qrmh_initial_mariadb(void)
 
 	const char** schema = NULL;
 	const char* initial_schmea[] = {
+        // repair mysql proc table
+        QRMH_REPAIR_MYSQL_PROC,
+
+		// create database, tables, and views
+		QRMH_CREATE_DB,
+		QRMH_CHANGE_DB,
+		
+
+
+
+
+
 
 		NULL
 	};
