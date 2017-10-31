@@ -1,8 +1,8 @@
 #include <mysql.h>
 #include <errno.h>
 
-#include "qrmh_mariadb.h"
-#include "qrmh_mariadb_schema.h"
+#include "qru_mariadb.h"
+#include "qru_mariadb_schema.h"
 
 #include <assert.h>
 
@@ -71,7 +71,7 @@ static MYSQL* create_connection(const char* db, const int auto_commit)
 			return NULL;
 	}
 
-	if(mysql_real_connect(real_conn, "localhost", "root", "qnapqnap", db, 0, "/tmp/mysql_qrmh.sock", CLIENT_MULTI_RESULTS) == NULL) {
+	if(mysql_real_connect(real_conn, "localhost", "root", "qnapqnap", db, 0, "/tmp/mysql_qru.sock", CLIENT_MULTI_RESULTS) == NULL) {
 		if(real_conn) mysql_close(real_conn);
 			return NULL;
 	}
@@ -100,7 +100,7 @@ static void close_connection(MYSQL* conn)
 // ----------------------------------------------------------------------------
 // MariaDB APIs
 // ----------------------------------------------------------------------------
-int qrmh_execute_command(const char *cmd)
+int qru_execute_command(const char *cmd)
 {
 	if(!cmd)
 		return -1;
@@ -109,7 +109,7 @@ int qrmh_execute_command(const char *cmd)
 	MYSQL* conn = NULL;
 	MYSQL_STMT* stmt = NULL;
 
-	conn = create_connection("qrmh", 1);
+	conn = create_connection("qru", 1);
 	if(!conn) {
 		MSG_E("create_connection failed\n");
 		return 0;
@@ -132,7 +132,7 @@ exception:
 	return ret;
 }
 
-void qrmh_initial_mariadb(void)
+void qru_initial_mariadb(void)
 {
 	if(initialized)
 		return ;
@@ -144,11 +144,11 @@ void qrmh_initial_mariadb(void)
 	const char** schema = NULL;
 	const char* initial_schmea[] = {
         // repair mysql proc table
-        QRMH_REPAIR_MYSQL_PROC,
+        QRU_REPAIR_MYSQL_PROC,
 
 		// create database, tables, and views
-		QRMH_CREATE_DB,
-		QRMH_CHANGE_DB,
+		QRU_CREATE_DB,
+		QRU_CHANGE_DB,
 		
 
 
