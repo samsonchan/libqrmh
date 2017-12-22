@@ -273,29 +273,9 @@ void qru_initial_mariadb() {
     const char** schema = NULL;
     const char* initial_schmea[] = {
 
-        // create database and tables
+        // create database
         QRU_CREATE_DB,
         QRU_CHANGE_DB,
-        QRU_CREATE_CPU_DAY_TABLE,
-        QRU_CREATE_CPU_WEEK_TABLE,
-        QRU_CREATE_CPU_MONTH_TABLE,
-        QRU_CREATE_CPU_YEAR_TABLE,
-        QRU_CREATE_MEM_DAY_TABLE,
-        QRU_CREATE_MEM_WEEK_TABLE,
-        QRU_CREATE_MEM_MONTH_TABLE,
-        QRU_CREATE_MEM_YEAR_TABLE,
-        QRU_CREATE_NIC_DAY_TABLE,
-        QRU_CREATE_NIC_WEEK_TABLE,
-        QRU_CREATE_NIC_MONTH_TABLE,
-        QRU_CREATE_NIC_YEAR_TABLE,
-        QRU_CREATE_POOL_DAY_TABLE,
-        QRU_CREATE_POOL_WEEK_TABLE,
-        QRU_CREATE_POOL_MONTH_TABLE,
-        QRU_CREATE_POOL_YEAR_TABLE,
-        QRU_CREATE_PROC_DAY_TABLE,
-        QRU_CREATE_PROC_WEEK_TABLE,
-        QRU_CREATE_PROC_MONTH_TABLE,
-        QRU_CREATE_PROC_YEAR_TABLE,
 
 		// cleanup procedure & function
 
